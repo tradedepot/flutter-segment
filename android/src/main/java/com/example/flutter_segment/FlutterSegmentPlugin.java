@@ -14,6 +14,7 @@ import com.segment.analytics.Properties;
 import com.segment.analytics.Traits;
 import com.segment.analytics.Options;
 import com.segment.analytics.Middleware;
+import com.segment.analytics.android.integrations.mixpanel.MixpanelIntegration;
 import com.segment.analytics.integrations.BasePayload;
 import com.segment.analytics.android.integrations.amplitude.AmplitudeIntegration;
 import static com.segment.analytics.Analytics.LogLevel;
@@ -77,6 +78,7 @@ public class FlutterSegmentPlugin implements MethodCallHandler, FlutterPlugin {
         analyticsBuilder.use(AmplitudeIntegration.FACTORY);
       }
 
+      analyticsBuilder.use(MixpanelIntegration.FACTORY);
       // Here we build a middleware that just appends data to the current context
       // using the [deepMerge] strategy.
       analyticsBuilder.middleware(
