@@ -1,18 +1,17 @@
 import 'dart:io';
 
-import 'package:meta/meta.dart';
 import 'package:flutter_segment/src/segment_platform_interface.dart';
 
-export 'package:flutter_segment/src/segment_observer.dart';
 export 'package:flutter_segment/src/segment_default_options.dart';
+export 'package:flutter_segment/src/segment_observer.dart';
 
 class Segment {
   static SegmentPlatform get _segment => SegmentPlatform.instance;
 
   static Future<void> identify({
-    @required userId,
-    Map<String, dynamic> traits,
-    Map<String, dynamic> options,
+    required userId,
+    Map<String, dynamic>? traits,
+    Map<String, dynamic>? options,
   }) {
     return _segment.identify(
       userId: userId,
@@ -22,9 +21,9 @@ class Segment {
   }
 
   static Future<void> track({
-    @required String eventName,
-    Map<String, dynamic> properties,
-    Map<String, dynamic> options,
+    required String eventName,
+    Map<String, dynamic>? properties,
+    Map<String, dynamic>? options,
   }) {
     return _segment.track(
       eventName: eventName,
@@ -34,9 +33,9 @@ class Segment {
   }
 
   static Future<void> screen({
-    @required String screenName,
-    Map<String, dynamic> properties,
-    Map<String, dynamic> options,
+    required String screenName,
+    Map<String, dynamic>? properties,
+    Map<String, dynamic>? options,
   }) {
     return _segment.screen(
       screenName: screenName,
@@ -46,9 +45,9 @@ class Segment {
   }
 
   static Future<void> group({
-    @required String groupId,
-    Map<String, dynamic> traits,
-    Map<String, dynamic> options,
+    required String groupId,
+    Map<String, dynamic>? traits,
+    Map<String, dynamic>? options,
   }) {
     return _segment.group(
       groupId: groupId,
@@ -58,8 +57,8 @@ class Segment {
   }
 
   static Future<void> alias({
-    @required String alias,
-    Map<String, dynamic> options,
+    required String alias,
+    Map<String, dynamic>? options,
   }) {
     return _segment.alias(
       alias: alias,
@@ -67,7 +66,7 @@ class Segment {
     );
   }
 
-  static Future<String> get getAnonymousId {
+  static Future<String?> get getAnonymousId {
     return _segment.getAnonymousId;
   }
 
@@ -85,10 +84,8 @@ class Segment {
 
   static Future<void> debug(bool enabled) {
     if (Platform.isAndroid) {
-      throw Exception(
-        'Debug flag cannot be dynamically set on Android.\n'
-        'Add to AndroidManifest and avoid calling this method when Platform.isAndroid.'
-      );
+      throw Exception('Debug flag cannot be dynamically set on Android.\n'
+          'Add to AndroidManifest and avoid calling this method when Platform.isAndroid.');
     }
 
     return _segment.debug(enabled);
