@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_segment/src/segment_default_options.dart';
 import 'package:flutter_segment/src/segment_platform_interface.dart';
@@ -7,9 +6,9 @@ const MethodChannel _channel = MethodChannel('flutter_segment');
 
 class SegmentMethodChannel extends SegmentPlatform {
   Future<void> identify({
-    @required userId,
-    Map<String, dynamic> traits,
-    Map<String, dynamic> options,
+    required userId,
+    Map<String, dynamic>? traits,
+    Map<String, dynamic>? options,
   }) async {
     try {
       await _channel.invokeMethod('identify', {
@@ -23,9 +22,9 @@ class SegmentMethodChannel extends SegmentPlatform {
   }
 
   Future<void> track({
-    @required String eventName,
-    Map<String, dynamic> properties,
-    Map<String, dynamic> options,
+    required String eventName,
+    Map<String, dynamic>? properties,
+    Map<String, dynamic>? options,
   }) async {
     try {
       await _channel.invokeMethod('track', {
@@ -39,9 +38,9 @@ class SegmentMethodChannel extends SegmentPlatform {
   }
 
   Future<void> screen({
-    @required String screenName,
-    Map<String, dynamic> properties,
-    Map<String, dynamic> options,
+    required String screenName,
+    Map<String, dynamic>? properties,
+    Map<String, dynamic>? options,
   }) async {
     try {
       await _channel.invokeMethod('screen', {
@@ -55,9 +54,9 @@ class SegmentMethodChannel extends SegmentPlatform {
   }
 
   Future<void> group({
-    @required String groupId,
-    Map<String, dynamic> traits,
-    Map<String, dynamic> options,
+    required String groupId,
+    Map<String, dynamic>? traits,
+    Map<String, dynamic>? options,
   }) async {
     try {
       await _channel.invokeMethod('group', {
@@ -71,8 +70,8 @@ class SegmentMethodChannel extends SegmentPlatform {
   }
 
   Future<void> alias({
-    @required String alias,
-    Map<String, dynamic> options,
+    required String alias,
+    Map<String, dynamic>? options,
   }) async {
     try {
       await _channel.invokeMethod('alias', {
@@ -84,7 +83,7 @@ class SegmentMethodChannel extends SegmentPlatform {
     }
   }
 
-  Future<String> get getAnonymousId async {
+  Future<String?> get getAnonymousId async {
     return await _channel.invokeMethod('getAnonymousId');
   }
 

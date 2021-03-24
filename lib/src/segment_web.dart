@@ -8,7 +8,7 @@ class SegmentWeb {
     final MethodChannel channel = MethodChannel(
       'flutter_segment',
       const StandardMethodCodec(),
-      registrar.messenger,
+      registrar,
     );
     final SegmentWeb instance = SegmentWeb();
     channel.setMethodCallHandler(instance.handleMethodCall);
@@ -55,7 +55,6 @@ class SegmentWeb {
         final user = analytics.callMethod('user');
         final anonymousId = user.callMethod('anonymousId');
         return anonymousId;
-        break;
       case 'reset':
         analytics.callMethod('reset');
         break;
