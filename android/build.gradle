@@ -36,6 +36,6 @@ android {
         implementation 'com.segment.analytics.android:analytics:4.7.0'
         implementation 'com.segment.analytics.android.integrations:amplitude:+'
         implementation 'com.segment.analytics.android.integrations:mixpanel:+'
-        implementation 'com.segment.analytics.android.integrations:intercom:+'
+        // implementation 'com.segment.analytics.android.integrations:intercom:+'
     }
 }
